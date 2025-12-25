@@ -46,10 +46,9 @@ export default function Navbar() {
     >
       <div className="container-custom">
         <nav className="flex items-center justify-between">
-          {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 bg-gradient-to-br from-teal-500 to-teal-700 rounded-xl flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
-              <span className="text-white text-xl">🏠</span>
+            <div className="w-5 h-5 rounded-xl flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
+              <span className="text-white text-2xl">🏠</span>
             </div>
             <span className="text-2xl font-bold">
               <span className="text-teal-700">Care</span>
@@ -57,7 +56,6 @@ export default function Navbar() {
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
@@ -77,7 +75,6 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Auth Buttons - Desktop */}
           <div className="hidden lg:flex items-center gap-4">
             {status === 'loading' ? (
               <div className="w-8 h-8 rounded-full bg-gray-200 animate-pulse" />
@@ -146,7 +143,6 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="lg:hidden w-10 h-10 rounded-xl bg-white shadow-md flex items-center justify-center text-gray-700 hover:text-teal-700 transition-colors"
@@ -155,7 +151,6 @@ export default function Navbar() {
           </button>
         </nav>
 
-        {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="lg:hidden mt-4 bg-white rounded-2xl shadow-xl p-6 animate-fade-in">
             <div className="flex flex-col gap-4">
