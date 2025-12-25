@@ -6,7 +6,7 @@ import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-
+// Reviews data from Zapshift Resources
 const reviews = [
   {
     "id": "5f47ac10b4f1c03e8c123456",
