@@ -119,7 +119,7 @@ export default function MyBookingsPage() {
   return (
     <div className="min-h-screen py-12 px-4">
       <div className="container-custom max-w-6xl mx-auto">
-        {/* Header */}
+        
         <div className="text-center mb-10">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
             My <span className="gradient-text">Bookings</span>
@@ -127,7 +127,7 @@ export default function MyBookingsPage() {
           <p className="text-gray-600">Track and manage all your service bookings</p>
         </div>
 
-        {/* Stats Cards */}
+        
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           <div className="bg-white rounded-xl p-4 shadow-md">
             <div className="text-2xl font-bold text-teal-600">{bookings.length}</div>
@@ -153,7 +153,7 @@ export default function MyBookingsPage() {
           </div>
         </div>
 
-        {/* Bookings List */}
+        
         {bookings.length === 0 ? (
           <div className="bg-white rounded-2xl shadow-xl p-12 text-center">
             <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -174,7 +174,7 @@ export default function MyBookingsPage() {
               >
                 <div className="p-6">
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                    {/* Service Info */}
+                    
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
                         <h3 className="text-xl font-bold text-gray-800">{booking.serviceName}</h3>
@@ -201,7 +201,7 @@ export default function MyBookingsPage() {
                       </div>
                     </div>
 
-                    {/* Action Buttons */}
+                    
                     <div className="flex gap-3">
                       <button
                         onClick={() => {
@@ -233,7 +233,7 @@ export default function MyBookingsPage() {
           </div>
         )}
 
-        {/* Modal */}
+        
         {showModal && selectedBooking && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
             <div className="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto animate-fade-in">
