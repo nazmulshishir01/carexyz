@@ -5,7 +5,7 @@ import { signIn, useSession } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
-import { FiMail, FiLock, FiEye, FiEyeOff, FiArrowRight } from 'react-icons/fi';
+import { FiMail, FiLock, FiEye, FiEyeOff, FiArrowRight, FiCheckCircle } from 'react-icons/fi';
 import { FcGoogle } from 'react-icons/fc';
 
 export default function LoginPage() {
@@ -93,121 +93,161 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen pt-24 pb-12 flex items-center justify-center">
+    <div className="min-h-screen pt-20 pb-12 flex items-center justify-center bg-gradient-to-br from-slate-50 via-white to-slate-50">
+      {/* Background Elements */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-teal-100/30 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-orange-100/20 rounded-full blur-3xl" />
+      </div>
+
       <div className="container-custom">
         <div className="max-w-md mx-auto">
           {/* Card */}
-          <div className="bg-white rounded-3xl shadow-xl overflow-hidden animate-fade-in-up">
-            {/* Header */}
-            <div className="bg-gradient-to-br from-teal-600 to-teal-700 px-8 py-10 text-center">
-              <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <span className="text-3xl">👋</span>
+          <div className="bg-white rounded-2xl shadow-2xl overflow-hidden animate-fade-in-up border border-slate-200">
+            
+            {/* Header Section */}
+            <div className="px-8 pt-10 pb-8 border-b border-slate-200">
+              <div className="space-y-2">
+                <h1 className="text-3xl font-bold text-slate-900">Welcome Back</h1>
+                <p className="text-slate-600 text-sm">Sign in to your Care.xyz account</p>
               </div>
-              <h1 className="text-2xl font-bold text-white">Welcome Back!</h1>
-              <p className="text-teal-100 mt-2">Sign in to continue to Care.xyz</p>
             </div>
 
-            {/* Form */}
+            {/* Form Section */}
             <div className="p-8">
-              <form onSubmit={handleSubmit} className="space-y-5">
-                {/* Email */}
+              <form onSubmit={handleSubmit} className="space-y-6">
+                
+                {/* Email Field */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-slate-700 mb-3">
                     Email Address
                   </label>
-                  <div className="relative">
-                    <FiMail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                  <div className="relative group">
+                    <FiMail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-teal-600 transition-colors" />
                     <input
                       type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className={`input-field pl-12 ${
-                        errors.email ? 'border-red-500 focus:border-red-500' : ''
+                      className={`w-full pl-12 pr-4 py-3 rounded-xl border-2 transition-all duration-300 focus:outline-none ${
+                        errors.email
+                          ? 'border-red-400 bg-red-50/50 focus:border-red-500'
+                          : 'border-slate-200 focus:border-teal-500 focus:bg-teal-50/30'
                       }`}
-                      placeholder="Enter your email"
+                      placeholder="your.email@example.com"
                     />
                   </div>
                   {errors.email && (
-                    <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                    <p className="text-red-500 text-xs font-medium mt-2">{errors.email}</p>
                   )}
                 </div>
 
-                {/* Password */}
+                {/* Password Field */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-slate-700 mb-3">
                     Password
                   </label>
-                  <div className="relative">
-                    <FiLock className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                  <div className="relative group">
+                    <FiLock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-teal-600 transition-colors" />
                     <input
                       type={showPassword ? 'text' : 'password'}
                       name="password"
                       value={formData.password}
                       onChange={handleChange}
-                      className={`input-field pl-12 pr-12 ${
-                        errors.password ? 'border-red-500 focus:border-red-500' : ''
+                      className={`w-full pl-12 pr-12 py-3 rounded-xl border-2 transition-all duration-300 focus:outline-none ${
+                        errors.password
+                          ? 'border-red-400 bg-red-50/50 focus:border-red-500'
+                          : 'border-slate-200 focus:border-teal-500 focus:bg-teal-50/30'
                       }`}
-                      placeholder="Enter your password"
+                      placeholder="••••••••••"
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors"
                     >
-                      {showPassword ? <FiEyeOff /> : <FiEye />}
+                      {showPassword ? <FiEyeOff size={18} /> : <FiEye size={18} />}
                     </button>
                   </div>
                   {errors.password && (
-                    <p className="text-red-500 text-sm mt-1">{errors.password}</p>
+                    <p className="text-red-500 text-xs font-medium mt-2">{errors.password}</p>
                   )}
+                </div>
+
+                {/* Forgot Password Link */}
+                <div className="flex justify-end">
+                  <Link
+                    href="/forgot-password"
+                    className="text-xs font-semibold text-teal-600 hover:text-teal-700 transition-colors"
+                  >
+                    Forgot password?
+                  </Link>
                 </div>
 
                 {/* Submit Button */}
                 <button
                   type="submit"
                   disabled={loading}
-                  className="btn-primary w-full justify-center disabled:opacity-50"
+                  className="w-full bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
                 >
                   {loading ? (
-                    <span className="loader w-5 h-5 border-2"></span>
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      <span>Signing in...</span>
+                    </div>
                   ) : (
                     <>
-                      Sign In
-                      <FiArrowRight />
+                      <span>Sign In</span>
+                      <FiArrowRight size={18} />
                     </>
                   )}
                 </button>
               </form>
 
               {/* Divider */}
-              <div className="flex items-center gap-4 my-6">
-                <div className="flex-grow h-px bg-gray-200" />
-                <span className="text-sm text-gray-500">or continue with</span>
-                <div className="flex-grow h-px bg-gray-200" />
+              <div className="flex items-center gap-3 my-8">
+                <div className="flex-grow h-px bg-slate-200" />
+                <span className="text-xs text-slate-500 font-medium">OR CONTINUE WITH</span>
+                <div className="flex-grow h-px bg-slate-200" />
               </div>
 
               {/* Google Sign In */}
               <button
                 onClick={handleGoogleSignIn}
-                className="w-full flex items-center justify-center gap-3 px-6 py-3 border-2 border-gray-200 rounded-xl hover:bg-gray-50 transition-colors"
+                className="w-full flex items-center justify-center gap-3 px-6 py-3 border-2 border-slate-200 rounded-xl hover:border-slate-300 hover:bg-slate-50 transition-all duration-300 font-medium text-slate-700"
               >
-                <FcGoogle className="text-xl" />
-                <span className="font-medium text-gray-700">Google</span>
+                <FcGoogle size={20} />
+                <span>Continue with Google</span>
               </button>
 
               {/* Register Link */}
-              <p className="text-center mt-6 text-gray-600">
+              <p className="text-center mt-8 text-slate-600 text-sm">
                 Don't have an account?{' '}
                 <Link
                   href={`/register${callbackUrl !== '/' ? `?callbackUrl=${encodeURIComponent(callbackUrl)}` : ''}`}
-                  className="text-teal-700 font-semibold hover:underline"
+                  className="font-semibold text-teal-600 hover:text-teal-700 transition-colors"
                 >
-                  Sign Up
+                  Create one now
                 </Link>
               </p>
             </div>
+
+            {/* Footer Security Info */}
+            <div className="bg-slate-50 border-t border-slate-200 px-8 py-6">
+              <div className="flex items-center gap-2 text-slate-600">
+                <FiCheckCircle size={16} className="text-green-600 flex-shrink-0" />
+                <span className="text-xs font-medium">Secure & encrypted connection</span>
+              </div>
+            </div>
           </div>
+
+          {/* Help Text */}
+          <p className="text-center mt-6 text-slate-600 text-xs">
+            Need help?{' '}
+            <Link href="/contact" className="text-teal-600 font-semibold hover:underline">
+              Contact support
+            </Link>
+          </p>
         </div>
       </div>
     </div>
